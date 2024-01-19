@@ -26,6 +26,7 @@ public:
 };
 
 
+
 // Square constructor
 template<typename element>
 matrix<element>::matrix(size_t size) : size(size) {
@@ -57,6 +58,18 @@ std::vector<element> &matrix<element>::operator[](size_t x) {
 template<typename element>
 size_t matrix<element>::getSize() {
     if(data.size() != data[0].size()) throw std::invalid_argument("Tried to get square size of a rectangular matrix");
+}
+
+// Return size in X dimension for rectangular matrices
+template<typename element>
+size_t matrix<element>::getSizeX() {
+    return data.size();
+}
+
+// Return size in Y dimension for rectangular matrices
+template<typename element>
+size_t matrix<element>::getSizeY() {
+    return data[0].size();
 }
 
 
