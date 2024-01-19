@@ -26,7 +26,12 @@ public:
 
     // Print -> only works if << operator is overloaded
     void print();
+
+    template<typename myElement>
+    friend std::ostream& operator<<(std::ostream& os, matrix<myElement> &myMatrix);
+
 };
+
 
 // Square constructor
 template<typename element>
@@ -73,7 +78,7 @@ size_t matrix<element>::getSizeY() {
     return data[0].size();
 }
 
-
+// Simple print function
 template<typename element>
 void matrix<element>::print() {
     try {
@@ -86,9 +91,22 @@ void matrix<element>::print() {
     } catch(...) {
         std::cerr << "Error while printing!\n";
     }
-
-
 }
 
+// for printing via << operator
+template<typename element>
+std::ostream& operator<<(std::ostream& os, matrix<element> &myMatrix){
+    try {
+        for(auto y = 0u; y < myMatrix.getSizeX(); y++) {
+            for(auto x = 0u; x < myMatrix.getSizeY(); x++) {
+                os << myMatrix[x][y] << "\t";
+            }
+            os << "\n";
+        }
+    } catch(...) {
+        std::cerr << "Error while printing!\n";
+    }
+    return os;
+}
 
 #endif //MATRIX_MATRIX_HPP
