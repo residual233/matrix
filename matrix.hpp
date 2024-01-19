@@ -56,7 +56,7 @@ std::vector<element> &matrix<element>::operator[](size_t x) {
 // get size for square matricies
 template<typename element>
 size_t matrix<element>::getSize() {
-    if(data.size() != data[0].size()) throw std::
+    if(data.size() != data[0].size()) throw std::invalid_argument("Tried to get square size of a rectangular matrix");
 }
 
 
