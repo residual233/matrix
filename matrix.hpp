@@ -23,9 +23,10 @@ public:
     size_t getSize();
     size_t getSizeX();
     size_t getSizeY();
+
+    // Print -> only works if << operator is overloaded
+    void print();
 };
-
-
 
 // Square constructor
 template<typename element>
@@ -72,6 +73,22 @@ size_t matrix<element>::getSizeY() {
     return data[0].size();
 }
 
+
+template<typename element>
+void matrix<element>::print() {
+    try {
+        for(auto y = 0u; y < data.size(); y++) {
+            for(auto x = 0u; x < data.size(); x++) {
+                std::cout << data[x][y] << "\t";
+            }
+            std::cout << "\n";
+        }
+    } catch(...) {
+        std::cerr << "Error while printing!\n";
+    }
+
+
+}
 
 
 #endif //MATRIX_MATRIX_HPP
