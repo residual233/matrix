@@ -1,7 +1,3 @@
-//
-// Created by Etienne on 19.01.2024.
-//
-
 #ifndef MATRIX_MATRIX_HPP
 #define MATRIX_MATRIX_HPP
 #include <vector>
